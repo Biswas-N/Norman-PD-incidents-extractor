@@ -14,4 +14,4 @@ cov:
 	pipenv run python -m pytest -v --cov=project0
 
 lint:
-	pipenv run python -m autopep8 --in-place --aggressive --aggressive --aggressive --recursive .
+	pipenv run python -m autopep8 --in-place --aggressive --aggressive --recursive .
