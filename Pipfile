@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 pypdf2 = "*"
 pandas = "*"
+project0 = {editable = true, path = "."}
 
 [dev-packages]
 black = "*"

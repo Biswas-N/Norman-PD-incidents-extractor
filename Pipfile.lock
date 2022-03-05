@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f14d2f109d201a70a2a896d5743afb76d407d0161eeb3c719824deaecac4b4cc"
+            "sha256": "fcf519deb7f01e1cf522b89f8acce92cec7a023928c84745e49c09ebccafe09f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -67,6 +67,10 @@
             ],
             "index": "pypi",
             "version": "==1.4.1"
+        },
+        "project0": {
+            "editable": true,
+            "path": "."
         },
         "pypdf2": {
             "hashes": [
