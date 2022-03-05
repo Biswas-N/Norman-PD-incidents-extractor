@@ -33,4 +33,5 @@ def extract_incidents(incidents: list) -> list[Incident]:
             incident[3],
             incident[4]
         ))
+
     return parsed_incidents

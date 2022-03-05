@@ -72,3 +72,34 @@ def test_extract_incidents_should_return_a_list(
 
     assert len(got) == 6
     assert got == want
+
+
+def test_incident_class():
+    raw = ('2/24/2022 1:05',
+           '2022-00010284',
+           '1306 168TH AVE NE',
+           '911 Call Nature Unknown',
+           'OK0140200')
+    incident = parser.Incident(raw[0], raw[1], raw[2], raw[3], raw[4])
+
+    # Testing __repr__()
+    got = incident.__repr__()
+    want = "%s(%r)" % (incident.__class__, incident.__dict__)
+
+    assert got == want
+
+    # Testing __str__()
+    got = incident.__str__()
+    want = f'Incident (\n\tDateTime: {incident.date_time}\n\tIncidentNumber: {incident.incident_number}\n\tLocation: {incident.location}\n\tNature: {incident.nature}\n\tIncidentORI: {incident.incident_ori}\n)'
+
+    assert got == want
+
+    # Testing __eq__ ( == )
+    got = incident
+    want = parser.Incident('2/24/2022 1:05',
+                           '2022-00010284',
+                           '1306 168TH AVE NE',
+                           '911 Call Nature Unknown',
+                           'OK0140200')
+
+    assert got == want
