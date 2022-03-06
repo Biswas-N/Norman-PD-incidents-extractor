@@ -5,7 +5,7 @@ class Incident:
             incident_number,
             location,
             nature,
-            incident_ori):
+            incident_ori) -> None:
         self.date_time = date_time
         self.incident_number = incident_number
         self.location = location
