@@ -5,10 +5,10 @@ name = "pypi"
 
 [packages]
 pypdf2 = "*"
-pytest = "*"
-pytest-cov = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-cov = "*"
 pandas = "*"
 jupyterlab = "*"
 autopep8 = "*"
