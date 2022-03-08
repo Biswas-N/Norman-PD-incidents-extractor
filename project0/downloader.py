@@ -8,7 +8,7 @@ from PyPDF2.utils import PdfReadError
 
 
 def fetch_incidents(url: str) -> list:
-    """Returns the extracted raw incidents data (unparsed) from all pages of the given URL"""
+    """Returns the extracted raw incidents data (unparsed 2D list) from all pages of the given URL"""
 
     try:
         headers = {}
@@ -26,9 +26,10 @@ def fetch_incidents(url: str) -> list:
 
 
 def extract_incidents(temp_file: IO[bytes]) -> list:
-    """Returns an array of page-wise extracted unformatted string from the given PDF BytesIO object"""
+    """Returns a 2D list of page-wise extracted unformatted incidents from the given PDF BytesIO object"""
 
     try:
+        # Reads the PDF file from its Byte Buffer
         pdf_reader = PyPDF2.pdf.PdfFileReader(temp_file)
         pages_count = pdf_reader.numPages
 
@@ -39,6 +40,8 @@ def extract_incidents(temp_file: IO[bytes]) -> list:
 
         temp_file.close()
 
+        # Remove the table headers and additional content (non-incident content) from the
+        # page text
         pages_text = re.sub(
             'Date / Time\nIncident Number\nLocation\nNature\nIncident ORI\n',
             '',
@@ -47,6 +50,8 @@ def extract_incidents(temp_file: IO[bytes]) -> list:
             r'NORMAN POLICE DEPARTMENT\nDaily Incident Summary \(Public\)\n',
             '',
             pages_text)
+
+        # Seperate each incident row using '\n;;'
         pages_text = re.sub(
             r'\n(\d+/\d+/\d{4}.\d+:\d\d)',
             lambda x: f'\n;;{x.group(1)}',
@@ -57,9 +62,13 @@ def extract_incidents(temp_file: IO[bytes]) -> list:
             pages_text)
         pages_text += ';;'
 
+        # Extract the incidents column data (DateTime, Incident Number, Location, Nature and IncidentORI)
+        # Extracts the rows containing non-empty columns and empty nature
+        # column
         data = re.findall(
             r'(\d+/\d+/\d{4}.\d+:\d\d)\n(\d{4}-\d{8})\n([\w,\.;#\'<>&\(\) /-]*)\n([\w /]*)\n([\w /]*)\n;;',
             pages_text)
+        # Extracts the rows containing empty location and nature columns
         data += re.findall(
             r'(\d+/\d+/\d{4}.\d+:\d\d)\n(\d{4}-\d{8})()()\n([\w /]*)\n;;',
             pages_text)

@@ -1,4 +1,6 @@
 class Incident:
+    """Incident class is a representation of each incident row"""
+
     def __init__(
             self,
             date_time,
@@ -27,11 +29,11 @@ def extract_incidents(incidents: list) -> list[Incident]:
     parsed_incidents: list[Incident] = []
     for incident in incidents:
         parsed_incidents.append(Incident(
-            incident[0],
-            incident[1],
-            incident[2],
-            incident[3],
-            incident[4]
+            incident[0],  # DateTime
+            incident[1],  # Incident Number
+            incident[2],  # Location
+            incident[3],  # Nature
+            incident[4]  # Incident ORI
         ))
 
     return parsed_incidents
