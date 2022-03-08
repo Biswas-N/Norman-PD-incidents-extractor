@@ -1,7 +1,7 @@
 # Norman PD Incidents Parser (Project 0)
-Norman PD Incidents Parser is a python based utillity tool used to extract incidents data from the provided incident PDF file URL.
+Norman PD Incidents Parser is a python based utillity tool used to extract incidents data from a provided incident PDF file URL.
 
-> The project's python code follows PEP8 Styling Guide
+> The project's python code follows PEP8 Style Guide
 
 ## Run on local system
 1. Clone this repository and move into the folder.
