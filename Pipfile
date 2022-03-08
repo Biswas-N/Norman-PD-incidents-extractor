@@ -5,15 +5,14 @@ name = "pypi"
 
 [packages]
 pypdf2 = "*"
-pandas = "*"
-project0 = {editable = true, path = "."}
-
-[dev-packages]
-black = "*"
 pytest = "*"
 pytest-cov = "*"
+
+[dev-packages]
+pandas = "*"
 jupyterlab = "*"
 autopep8 = "*"
+project0 = {editable = true, path = "."}
 
 [requires]
 python_version = "3.10"
