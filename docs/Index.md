@@ -11,6 +11,7 @@ Explanation about each module can be found later down the document (or follow th
 - [Downloader](#downloader)
 - [Parser](#parser)
 - [Storer](#storer)
+- [main.py](#mainpy)
 
 ## Downloader
 [`downloder.py`](../project0/downloader.py) contains the code to perform the following tasks.
@@ -103,3 +104,11 @@ In case any exception was raised while deleting old table, creating new table or
 get_stats creates `sqlite3.Connection` and `sqlite3.Cursor` objects using `with` resource manager and fetch's the natures and their count from the incidents table. The sql command used to fetch the statistics is `SELECT nature, count(*) FROM incidents WHERE IFNULL(nature, '') != '' GROUP BY nature ORDER BY count(*) DESC, nature ASC`
 
 > Note: The above command does not include empty incident count. This is done using `WHERE IFNULL(nature, '') != ''`.
+
+## main.py
+[`main.py`](../main.py) combines all the three modules (downloader, parser and storer) and performs the following functionalities.
+1. Used the built-in `argparse` package to accept the PDF URL from the command line as an argument.
+2. Then firstly, sends that URL to `downloader.fetch_incidents` to get the incidents as an unparsed 2-dimentional list.
+3. Secondly, sends the unparsed list to `parser.extract_incidents` to convert the unparsed incidents to `Incident` type objects.
+4. Later, create a database and resets the incidents table if the database was created earlier and inserts the extracted rows into the database using `storer.create_db` and `db.add_incidents`.
+5. Lastly if the rows were successfully inserted, the file calls `db.get_stats` to retrieve the final summary of Incident Natures and Counts.
