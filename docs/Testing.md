@@ -4,9 +4,9 @@ This file explans about the unittesting done to this utility using `pytest`. The
 ![Test-Coverage](./resources/Testing-P1.png)
 
 Testing is done specific to the three stages of the extraction process.
-- [Downloader]()
-- [Parser]()
-- [Storer]()
+- [Downloader](#downloder)
+- [Parser](#parser)
+- [Storer](#storer)
 
 ## Downloder
 [`test_downloader.py`](../tests/test_downloader.py) contains the testcases for download functionality of this utility.
