@@ -6,7 +6,10 @@ from project0 import downloader, parser, storer
 def main(url):
     # Download data
     incident_data = downloader.fetch_incidents(url)
-
+    if(incident_data is None):
+        print('Something unexpected hapenned!')
+        return
+    
     # Extract data
     incidents = parser.extract_incidents(incident_data)
 
@@ -14,8 +17,11 @@ def main(url):
     db = storer.create_db()
     inserted_count = db.add_incidents(incidents)
 
-    if(inserted_count != -1):
-        print(f'\n{db.get_stats()}')
+    if(inserted_count == -1):
+        print('Something unexpected hapenned!')
+        return
+
+    print(f'\n{db.get_stats()}')
 
 
 if __name__ == '__main__':
