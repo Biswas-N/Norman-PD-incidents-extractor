@@ -1,6 +1,6 @@
-# Norman PD Incidents Parser (Project 0)
+# Norman PD Incidents Extractor
 ## Developer: Biswas Nandamuri
-Norman PD Incidents Parser is a python based utillity tool used to extract incidents data from a provided incident PDF file URL.
+Norman PD Incidents Extractor is a python based utillity tool used to extract incidents data from a provided incident PDF file URL (which is hosted on Norman Police Department's website).
 
 > The project's python code follows PEP8 Style Guide
 
@@ -16,8 +16,8 @@ This utility uses a number of open source projects:
 ## Run on local system
 1. Clone this repository and move into the folder.
     ```sh
-    $ git clone https://github.com/Biswas-N/cs5293sp22-project0.git
-    $ cd cs5293sp22-project0
+    $ git clone https://github.com/Biswas-N/Norman-PD-incidents-extractor.git
+    $ cd Norman-PD-incidents-extractor
     ```
 2. Install dependencies using [Pipenv](https://github.com/pypa/pipenv).
     ```sh
