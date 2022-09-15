@@ -7,7 +7,7 @@ from project0 import downloader
 
 
 def test_fetch_incidents_should_return_unparsed_data_for_valid_url():
-    valid_url = 'https://www.normanok.gov/sites/default/files/documents/2022-02/2022-02-27_daily_incident_summary.pdf'
+    valid_url = 'https://www.normanok.gov/sites/default/files/documents/2022-08/2022-08-01_daily_incident_summary.pdf'
     got = downloader.fetch_incidents(valid_url)
 
     assert len(got) > 0
